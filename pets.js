@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict';
 
 const fs = require('fs');
@@ -130,7 +131,7 @@ if (process.argv.length > 2) {
                throw writeErr;
              }
 
-             console.log(removedPet);
+             console.log(removedPet[0]);
            });
           } else {
             console.error(`Usage: ${node} ${file} destroy INDEX`);
