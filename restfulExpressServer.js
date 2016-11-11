@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 const basicAuth = require('basic-auth');
+
 let auth = function(request, response, next) {
   function unauthorized(response) {
     response.set('WWW-Authenticate', 'Basic realm="Required"');
@@ -34,11 +35,6 @@ var morgan = require('morgan');
 app.use(morgan('short'));
 
 app.use(express.static('public'));
-
-// app.get('/pets', auth, function (request, response, next) {
-//   response.sendStatus(200);
-//   next();
-// });
 
 app.get('/pets/:index?', auth, function(request, response) {
   fs.readFile(petsPath, 'utf8', function(err, data) {
